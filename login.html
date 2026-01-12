@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCare Assist · Login</title>
+    <meta name="google-client-id" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body data-page="login">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/img/brand-logo.svg" alt="Brand" style="width:28px;height:28px;border-radius:6px">
+        <span class="brand-name">HealthCare Assist</span>
+      </div>
+    </header>
+    <main class="main auth-main login-bg">
+      <div class="auth-layout">
+        <div class="card auth-card glass">
+          <h2>Welcome back</h2>
+          <form id="loginForm" class="form">
+            <div class="field">
+              <span class="material-symbols-rounded">mail</span>
+              <input type="email" id="loginEmail" placeholder="Email" required>
+            </div>
+            <div class="field">
+              <span class="material-symbols-rounded">lock</span>
+              <input type="password" id="loginPassword" placeholder="Password" required minlength="6">
+            </div>
+            <div class="form-row">
+              <label class="checkbox">
+                <input type="checkbox" id="rememberMe">
+                <span>Remember me</span>
+              </label>
+              <a class="muted" href="signup.html">Create account</a>
+            </div>
+            <button class="btn primary" type="submit">Login</button>
+          </form>
+          <div class="google-login">
+            <div id="googleSignInContainer"></div>
+          </div>
+        </div>
+        <div class="gallery">
+          <img src="assets/img/gallery1.svg" alt="Care gallery 1">
+          <img src="assets/img/gallery2.svg" alt="Care gallery 2">
+          <img src="assets/img/gallery3.svg" alt="Care gallery 3">
+        </div>
+      </div>
+    </main>
+    <div id="toastContainer" class="toast-container"></div>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module">
+      import { login } from './assets/js/core/auth.js';
+      import { toast } from './assets/js/core/ui.js';
+      import { initGoogleLogin } from './assets/js/core/google.js';
+      const form = document.getElementById('loginForm');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        const remember = document.getElementById('rememberMe').checked;
+        try {
+          const res = await login(email, password, { remember });
+          if (res.ok) {
+            toast('Login successful', 'success');
+            setTimeout(() => location.href = 'dashboard.html', 600);
+          } else {
+            toast(res.error || 'Login failed', 'error');
+          }
+        } catch (err) {
+          toast(err.message || 'Login failed', 'error');
+        }
+      });
+      initGoogleLogin();
+    </script>
+  </body>
+</html>

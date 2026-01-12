@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCare Assist · Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  </head>
+  <body data-page="dashboard">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/img/brand-logo.svg" alt="Brand" style="width:28px;height:28px;border-radius:6px">
+        <span class="brand-name">HealthCare Assist</span>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><span class="material-symbols-rounded">dark_mode</span></button>
+        <button class="avatar-btn" id="avatarBtn">
+          <img class="avatar-img" src="assets/img/avatar-default.svg" alt="avatar">
+          <span id="avatarName"></span>
+        </button>
+      </div>
+    </header>
+    <div class="popover hidden" id="profilePopover">
+      <div class="profile-info">
+        <div id="profileName">User</div>
+        <div class="muted" id="profileEmail">user@example.com</div>
+      </div>
+      <a class="popover-item" href="help.html">Help</a>
+      <button class="popover-item danger" id="logoutInPopover">Logout</button>
+    </div>
+    <div class="page">
+      <aside class="sidebar">
+        <nav class="side-nav">
+          <a href="index.html"><span class="material-symbols-rounded">home</span><span>Home</span></a>
+          <a href="dashboard.html" class="active"><span class="material-symbols-rounded">dashboard</span><span>Dashboard</span></a>
+          <a href="appointments.html"><span class="material-symbols-rounded">event</span><span>Appointments</span></a>
+          <a href="medications.html"><span class="material-symbols-rounded">vaccines</span><span>Medicines</span></a>
+          <a href="reminders.html"><span class="material-symbols-rounded">notifications</span><span>Reminders</span></a>
+          <a href="settings.html"><span class="material-symbols-rounded">tune</span><span>Settings</span></a>
+          <a href="help.html"><span class="material-symbols-rounded">help</span><span>Help</span></a>
+        </nav>
+      </aside>
+    <main class="main">
+      <div class="breadcrumbs"><span>Dashboard</span></div>
+      <section class="greeting">
+        <h1 id="greetingTitle">Good day</h1>
+        <p class="muted">Here’s a snapshot of your care today.</p>
+      </section>
+
+      <section class="cards-grid">
+        <div class="card summary">
+          <div class="summary-head">
+            <span class="material-symbols-rounded">today</span>
+            <h3>Today’s appointments</h3>
+          </div>
+          <div id="summaryAppointments" class="summary-value">0</div>
+        </div>
+        <div class="card summary">
+          <div class="summary-head">
+            <span class="material-symbols-rounded">pill</span>
+            <h3>Pending medications</h3>
+          </div>
+          <div id="summaryPendingMeds" class="summary-value">0</div>
+        </div>
+        <div class="card summary">
+          <div class="summary-head">
+            <span class="material-symbols-rounded">notifications_active</span>
+            <h3>Upcoming reminders</h3>
+          </div>
+          <div id="summaryReminders" class="summary-value">0</div>
+        </div>
+      </section>
+
+      <section class="cards-grid">
+        <div class="card progress-card">
+          <h3>Medication progress</h3>
+          <div class="progress">
+            <div id="medProgressBar" class="progress-bar" style="width:0%"></div>
+          </div>
+          <div id="medProgressLabel" class="progress-label">0%</div>
+        </div>
+        <div class="card calendar-card">
+          <div class="calendar-head">
+            <h3 id="calendarTitle">Calendar</h3>
+            <div class="calendar-actions">
+              <button class="icon-btn" id="prevMonth"><span class="material-symbols-rounded">chevron_left</span></button>
+              <button class="icon-btn" id="nextMonth"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+          </div>
+          <div id="calendarGrid" class="calendar-grid"></div>
+          <div class="calendar-legend">
+            <span class="dot appt"></span><span>Appointment</span>
+            <span class="dot med"></span><span>Medication</span>
+            <span class="dot remind"></span><span>Reminder</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module">
+      import { requireAuth, greeting } from './assets/js/core/auth.js';
+      import { initDashboard } from './assets/js/features/dashboard.js';
+      requireAuth();
+      document.getElementById('greetingTitle').textContent = greeting();
+      initDashboard();
+    </script>
+  </body>
+</html>

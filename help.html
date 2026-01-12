@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCare Assist · Help & About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  </head>
+  <body data-page="help">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/img/brand-logo.svg" alt="Brand" style="width:28px;height:28px;border-radius:6px">
+        <span class="brand-name">HealthCare Assist</span>
+      </div>
+    </header>
+    <div class="page">
+      <aside class="sidebar">
+        <nav class="side-nav">
+          <a href="index.html"><span class="material-symbols-rounded">home</span><span>Home</span></a>
+          <a href="dashboard.html"><span class="material-symbols-rounded">dashboard</span><span>Dashboard</span></a>
+          <a href="appointments.html"><span class="material-symbols-rounded">event</span><span>Appointments</span></a>
+          <a href="medications.html"><span class="material-symbols-rounded">vaccines</span><span>Medicines</span></a>
+          <a href="reminders.html"><span class="material-symbols-rounded">notifications</span><span>Reminders</span></a>
+          <a href="settings.html"><span class="material-symbols-rounded">tune</span><span>Settings</span></a>
+          <a href="help.html" class="active"><span class="material-symbols-rounded">help</span><span>Help</span></a>
+        </nav>
+      </aside>
+    <main class="main">
+      <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>/</span><span>Help</span></div>
+      <section class="cards-grid">
+        <div class="card">
+          <h3>Quick guide</h3>
+          <div class="accordion">
+            <details>
+              <summary>Book an appointment</summary>
+              <p>Open Appointments, fill the form, and add. Edit or cancel from the list.</p>
+            </details>
+            <details>
+              <summary>Track medications</summary>
+              <p>Add medicine with dosage, frequency, and duration. Use the daily timeline and mark taken.</p>
+            </details>
+            <details>
+              <summary>See reminders</summary>
+              <p>Open Reminders to view alerts and preview. Notifications are generated based on your data.</p>
+            </details>
+            <details>
+              <summary>Adjust settings</summary>
+              <p>Use Settings to toggle dark mode, font size, and notification prefs.</p>
+            </details>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Contact</h3>
+          <form id="feedbackForm" class="form">
+            <div class="field"><span class="material-symbols-rounded">badge</span><input id="fbName" placeholder="Name" required></div>
+            <div class="field"><span class="material-symbols-rounded">mail</span><input id="fbEmail" type="email" placeholder="Email" required></div>
+            <div class="field textarea"><span class="material-symbols-rounded">chat</span><textarea id="fbMessage" placeholder="Message" required></textarea></div>
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module">
+      import { toast } from './assets/js/core/ui.js';
+      document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        toast('Feedback submitted', 'success');
+      });
+    </script>
+  </body>
+</html>

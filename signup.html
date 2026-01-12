@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCare Assist · Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body data-page="signup">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/img/brand-logo.svg" alt="Brand" style="width:28px;height:28px;border-radius:6px">
+        <span class="brand-name">HealthCare Assist</span>
+      </div>
+    </header>
+    <main class="main auth-main">
+      <div class="card auth-card">
+        <h2>Create your account</h2>
+        <form id="signupForm" class="form">
+          <div class="field">
+            <span class="material-symbols-rounded">badge</span>
+            <input type="text" id="signupName" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <span class="material-symbols-rounded">mail</span>
+            <input type="email" id="signupEmail" placeholder="Email" required>
+          </div>
+          <div class="field">
+            <span class="material-symbols-rounded">lock</span>
+            <input type="password" id="signupPassword" placeholder="Password (min 6)" required minlength="6">
+          </div>
+          <button class="btn primary" type="submit">Sign Up</button>
+        </form>
+      </div>
+    </main>
+    <div id="toastContainer" class="toast-container"></div>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module">
+      import { signup } from './assets/js/core/auth.js';
+      import { toast } from './assets/js/core/ui.js';
+      const form = document.getElementById('signupForm');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('signupName').value.trim();
+        const email = document.getElementById('signupEmail').value.trim();
+        const password = document.getElementById('signupPassword').value;
+        try {
+          const res = await signup({ name, email, password });
+          if (res.ok) {
+            toast('Account created', 'success');
+            setTimeout(() => location.href = 'login.html', 600);
+          } else {
+            toast(res.error || 'Sign up failed', 'error');
+          }
+        } catch (err) {
+          toast(err.message || 'Sign up failed', 'error');
+        }
+      });
+    </script>
+  </body>
+</html>

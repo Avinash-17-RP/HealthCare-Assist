@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCare Assist · Appointments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  </head>
+  <body data-page="appointments">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/img/brand-logo.svg" alt="Brand" style="width:28px;height:28px;border-radius:6px">
+        <span class="brand-name">HealthCare Assist</span>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><span class="material-symbols-rounded">dark_mode</span></button>
+        <button class="avatar-btn" id="avatarBtn">
+          <img class="avatar-img" src="assets/img/avatar-default.svg" alt="avatar">
+          <span id="avatarName"></span>
+        </button>
+      </div>
+    </header>
+    <div class="popover hidden" id="profilePopover">
+      <div class="profile-info">
+        <div id="profileName">User</div>
+        <div class="muted" id="profileEmail">user@example.com</div>
+      </div>
+      <a class="popover-item" href="help.html">Help</a>
+      <button class="popover-item danger" id="logoutInPopover">Logout</button>
+    </div>
+    <div class="page">
+      <aside class="sidebar">
+        <nav class="side-nav">
+          <a href="index.html"><span class="material-symbols-rounded">home</span><span>Home</span></a>
+          <a href="dashboard.html"><span class="material-symbols-rounded">dashboard</span><span>Dashboard</span></a>
+          <a href="appointments.html" class="active"><span class="material-symbols-rounded">event</span><span>Appointments</span></a>
+          <a href="medications.html"><span class="material-symbols-rounded">vaccines</span><span>Medicines</span></a>
+          <a href="reminders.html"><span class="material-symbols-rounded">notifications</span><span>Reminders</span></a>
+          <a href="settings.html"><span class="material-symbols-rounded">tune</span><span>Settings</span></a>
+          <a href="help.html"><span class="material-symbols-rounded">help</span><span>Help</span></a>
+        </nav>
+      </aside>
+    <main class="main">
+      <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>/</span><span>Appointments</span></div>
+      <section class="cards-grid">
+        <div class="card">
+          <h3>Book appointment</h3>
+          <form id="appointmentForm" class="form">
+            <div class="field"><span class="material-symbols-rounded">person</span><input id="docName" placeholder="Doctor name" required></div>
+            <div class="field"><span class="material-symbols-rounded">clinical_notes</span><input id="department" placeholder="Department" required></div>
+            <div class="field"><span class="material-symbols-rounded">calendar_month</span><input id="dateTime" type="datetime-local" required></div>
+            <div class="field"><span class="material-symbols-rounded">location_on</span><input id="location" placeholder="Location" required></div>
+            <button class="btn primary" type="submit">Add</button>
+          </form>
+          <div class="calendar-card" id="apptCalendarCard">
+            <div class="calendar-head">
+              <h3 id="apptCalTitle">Pick a date</h3>
+              <div class="calendar-actions">
+                <button class="icon-btn" id="apptPrev"><span class="material-symbols-rounded">chevron_left</span></button>
+                <button class="icon-btn" id="apptNext"><span class="material-symbols-rounded">chevron_right</span></button>
+              </div>
+            </div>
+            <div id="apptCalendarGrid" class="calendar-grid"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Your appointments</h3>
+          <div id="appointmentsList" class="list"></div>
+        </div>
+      </section>
+      <button id="fabAddAppt" class="fab"><span class="material-symbols-rounded">add</span></button>
+    </main>
+    </div>
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-head"><h3>Edit appointment</h3><button class="icon-btn" id="closeModal"><span class="material-symbols-rounded">close</span></button></div>
+        <form id="editAppointmentForm" class="form">
+          <input type="hidden" id="editId">
+          <div class="field"><span class="material-symbols-rounded">person</span><input id="editDocName" placeholder="Doctor name" required></div>
+          <div class="field"><span class="material-symbols-rounded">clinical_notes</span><input id="editDepartment" placeholder="Department" required></div>
+          <div class="field"><span class="material-symbols-rounded">schedule</span><input id="editDateTime" type="datetime-local" required></div>
+          <div class="field"><span class="material-symbols-rounded">location_on</span><input id="editLocation" placeholder="Location" required></div>
+          <div class="form-row">
+            <label class="checkbox"><input type="checkbox" id="editCompleted"><span>Mark completed</span></label>
+          </div>
+          <button class="btn primary" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module">
+      import { initAppointmentsPage } from './assets/js/features/appointments.js';
+      import { toast } from './assets/js/core/ui.js';
+      initAppointmentsPage();
+      document.getElementById('fabAddAppt').addEventListener('click', () => {
+        document.getElementById('docName').focus();
+        toast('Fill the form to add an appointment', 'info');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+{
+  "users": [
+    {
+      "id": "4c934eca-b295-4b9c-aa2b-39125c7f7504",
+      "name": "AVINASH",
+      "email": "vaddepally.@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "fe39d1c0-abec-4379-9a91-00d41de0e103",
+      "name": "AVINASH",
+      "email": "avivaddepally.25@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "784b4be5-7318-4476-b0f6-d636e04a2e72",
+      "name": "AVINASH",
+      "email": "vaddepallyavi.@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "name": "AVINASH",
+      "email": "vaddepallyavyi.@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "sessions": {
+    "370c3eb6-c375-4399-b315-c6ba0ab5a6d7": {
+      "userId": "784b4be5-7318-4476-b0f6-d636e04a2e72",
+      "createdAt": 1768213022194
+    },
+    "20b0b6c2-b9d8-4865-ad3f-bda07acdbecf": {
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "createdAt": 1768213199230
+    },
+    "e4cb9c84-451a-47bf-a280-067010706128": {
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "createdAt": 1768214748277
+    },
+    "9983054b-4c90-43b3-927b-a2b4d2ec974a": {
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "createdAt": 1768215691883
+    },
+    "65ffb2e9-9f14-4230-8d98-a5b3f29fa6df": {
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "createdAt": 1768216238164
+    },
+    "30b22509-be5a-45bc-b0d7-8a0a9214a6d9": {
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "createdAt": 1768218098248
+    },
+    "0d2309cf-28d6-4775-a254-98b8a640f39a": {
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "createdAt": 1768218904665
+    }
+  },
+  "appointments": [
+    {
+      "id": "287256c6-9704-43a6-b4b2-c960c9b72c7a",
+      "userId": "784b4be5-7318-4476-b0f6-d636e04a2e72",
+      "docName": "sandeep",
+      "department": "cse",
+      "dateTime": "2026-01-13T15:48",
+      "location": "chennai",
+      "completed": false
+    },
+    {
+      "id": "50e1d07d-eb54-4a0b-8c40-64cb81911945",
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "docName": "sandeep",
+      "department": "cse",
+      "dateTime": "2026-01-12T16:32",
+      "location": "chennai",
+      "completed": false
+    }
+  ],
+  "medications": [
+    {
+      "id": "4c0f3c30-7724-4c69-a1d0-47909dffcf0a",
+      "userId": "a91b64b5-7c56-48ab-831c-fe4955ed023d",
+      "name": "cheast and cold",
+      "dosage": "500mg",
+      "frequency": 3,
+      "duration": 30,
+      "taken": {
+        "2026-01-12": 0
+      }
+    }
+  ],
+  "settings": {
+    "784b4be5-7318-4476-b0f6-d636e04a2e72": {
+      "dark": false,
+      "fontSize": 16,
+      "notifAppointments": true,
+      "notifMedications": true
+    },
+    "a91b64b5-7c56-48ab-831c-fe4955ed023d": {
+      "dark": true,
+      "fontSize": 19,
+      "notifAppointments": true,
+      "notifMedications": true
+    }
+  }
+}

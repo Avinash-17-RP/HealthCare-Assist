@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCare Assist · Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  </head>
+  <body data-page="settings">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/img/brand-logo.svg" alt="Brand" style="width:28px;height:28px;border-radius:6px">
+        <span class="brand-name">HealthCare Assist</span>
+      </div>
+    </header>
+    <div class="page">
+      <aside class="sidebar">
+        <nav class="side-nav">
+          <a href="index.html"><span class="material-symbols-rounded">home</span><span>Home</span></a>
+          <a href="dashboard.html"><span class="material-symbols-rounded">dashboard</span><span>Dashboard</span></a>
+          <a href="appointments.html"><span class="material-symbols-rounded">event</span><span>Appointments</span></a>
+          <a href="medications.html"><span class="material-symbols-rounded">vaccines</span><span>Medicines</span></a>
+          <a href="reminders.html"><span class="material-symbols-rounded">notifications</span><span>Reminders</span></a>
+          <a href="settings.html" class="active"><span class="material-symbols-rounded">tune</span><span>Settings</span></a>
+          <a href="help.html"><span class="material-symbols-rounded">help</span><span>Help</span></a>
+        </nav>
+      </aside>
+    <main class="main">
+      <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>/</span><span>Settings</span></div>
+      <section class="cards-grid">
+        <div class="card">
+          <h3>Appearance</h3>
+          <div class="form-row">
+            <label class="switch">
+              <input type="checkbox" id="darkModeToggle">
+              <span>Dark mode</span>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Font size</label>
+            <input type="range" id="fontSizeRange" min="14" max="20" value="16">
+          </div>
+        </div>
+        <div class="card">
+          <h3>Notifications</h3>
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" id="notifAppointments">
+              <span>Appointments alerts</span>
+            </label>
+          </div>
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" id="notifMedications">
+              <span>Medication alerts</span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module">
+      import { initSettingsPage } from './assets/js/features/settings.js';
+      initSettingsPage();
+    </script>
+  </body>
+</html>
